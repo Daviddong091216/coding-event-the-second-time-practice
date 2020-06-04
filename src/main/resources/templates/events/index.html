@@ -6,6 +6,8 @@
 </head>
 <body>
     <h1>All Events</h1>
+    
+    <p th:unless="${events} and ${events.size()}" style="color:red">No Event!</p>
 
     <ul>
         <th:block th:each="event:${events}">
