@@ -11,6 +11,11 @@
 </head>
 <body class="container">
 
+<div th:fragment="header">
+    <h1  th:text="${title}"></h1>
+</div>
+
+
 <nav th:fragment="navigation">
     <ul class="nav">
         <li class="nav-item"><a class="nav-link" href="/">Main Page</a></li>
