@@ -19,18 +19,19 @@ public class EventController {
 
     @GetMapping
     public String displayAllEvents(Model model) {
-        model.addAttribute("events",events);
+        model.addAttribute("events", events);
         return "events/index";
     }
 
     @GetMapping("create")
-    public String renderCreateEventForm(){
+    public String renderCreateEventForm() {
         return "events/create";
     }
 
     @PostMapping("create")
-    public String processCreateEventForm(@RequestParam String eventName){
-        events.add(new Event(eventName));
+    public String processCreateEventForm(@RequestParam String eventName,
+                                         @RequestParam String eventDescription) {
+        events.add(new Event(eventName, eventDescription));
         return "redirect:/events";
     }
 
