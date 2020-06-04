@@ -24,4 +24,9 @@ public class EventController {
         return "events/index";
     }
 
+    @GetMapping("create")
+    public String renderCreatEvent(){
+        return "events/create";
+    }
+
 }
