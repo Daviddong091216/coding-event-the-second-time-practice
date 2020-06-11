@@ -1,3 +1,6 @@
 body{
-color:green;
+    color:green;
+}
+.error{
+    color:red;
 }
