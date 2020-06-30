@@ -34,7 +34,7 @@ public class EventController {
             if (result.isEmpty()) {
                 model.addAttribute("title", "Invalid Category ID:" + categoryId);
             } else {
-                EventCategory category=result.get();
+                EventCategory category = result.get();
                 model.addAttribute("title", "Events in Category:" + category.getName());
                 model.addAttribute("events", category.getEvents());
             }
@@ -70,15 +70,25 @@ public class EventController {
 
     @PostMapping("delete")
     public String processDeleteEventsForm(@RequestParam(required = false) int[] eventIds) {
-
         if (eventIds != null) {
             for (int id : eventIds) {
                 eventRepository.deleteById(id);
             }
         }
-
         return "redirect:";
     }
 
+    @GetMapping("detail")
+    public String displayEventDetails(@RequestParam Integer eventId, Model model) {
+        Optional<Event> result = eventRepository.findById(eventId);
+        if (result.isEmpty()) {
+            model.addAttribute("title", "Invalid Event Id:" + eventId);
+        } else {
+            Event event = result.get();
+            model.addAttribute("title", event.getName() + "  Details");
+            model.addAttribute("event", event);
+        }
+        return "events/details";
+    }
 
 }
